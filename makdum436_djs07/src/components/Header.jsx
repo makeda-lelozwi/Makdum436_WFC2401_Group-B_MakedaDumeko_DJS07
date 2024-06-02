@@ -1,3 +1,8 @@
+/**
+ * Renders the Header component which displays the title and project information of the Meme Generator application.
+ *
+ * @return {JSX.Element} The Header component.
+ */
 export default function Header() {
   return (
     <header className="header">

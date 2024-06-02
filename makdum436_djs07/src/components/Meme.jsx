@@ -1,6 +1,11 @@
 import React from "react";
 //import memesData from "../memesData";
 
+/**
+ * Renders a Meme component that allows the user to generate and display custom memes.
+ *
+ * @return {JSX.Element} The rendered Meme component.
+ */
 export default function Meme() {
   const [meme, setMeme] = React.useState({
     topText: "",
@@ -10,6 +15,11 @@ export default function Meme() {
 
   const [allMemes, setAllMemes] = React.useState([]);
 
+  /**
+ * Asynchronously fetches memes data from the ImgFlip API and returns it as a JSON object.
+ *
+ * @return {Promise<Object>} A Promise that resolves to the memes data as a JSON object.
+ */
   React.useEffect( () => {
     const getData = async()=>{
       const res = await fetch("https://api.imgflip.com/get_memes");
@@ -19,6 +29,11 @@ export default function Meme() {
     
   }, []);
 
+  /**
+ * Retrieves a random meme image from the API and updates the state with the new image URL.
+ *
+ * @return {void} This function does not return anything.
+ */
   function getMemeImage() {
     const randomNumber = Math.floor(Math.random() * allMemes.length);
     const url = allMemes[randomNumber].url;
@@ -27,7 +42,12 @@ export default function Meme() {
       randomImage: url,
     }));
   }
-
+/**
+ * Updates the state of the meme object with the new value of the input field.
+ *
+ * @param {Event} event - The event object containing information about the input field.
+ * @return {void} This function does not return anything.
+ */
   function handleChange(event) {
     const { name, value } = event.target;
     setMeme((prevMeme) => ({
